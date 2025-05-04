@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:title="Profile"/>
+    <item
+        android:id="@+id/nav_deashboard"
+        android:title="Deashboard"/>
+    <item
+        android:id="@+id/nav_markentry"
+        android:icon="@drawable/mark"
+        android:title="Mark Entry"/>
+    <item
+        android:id="@+id/nav_gpa"
+        android:icon="@drawable/view"
+        android:title="GPA/CGPA View Result"/>
+
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/share"
+        android:title="Share"/>
+
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/settings"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout"
+        android:title="Logout" />
+
+</menu>
+
