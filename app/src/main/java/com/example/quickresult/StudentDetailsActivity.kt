@@ -43,20 +43,22 @@ class StudentDetailsActivity : AppCompatActivity() {
             studentPicker.minValue = 1
             studentPicker.maxValue = 2000
 
+            // In StudentDetailsActivity's submitBtn.setOnClickListener
             submitBtn.setOnClickListener {
                 val session = spinnerSession.selectedItem.toString()
                 val name = nameEditText.text.toString()
                 val subjectNo = subjectPicker.value
                 val studentNo = studentPicker.value
 
-                // Optional: Validate input before proceeding
                 if (name.isBlank()) {
                     Toast.makeText(this, "Please enter a class name.", Toast.LENGTH_SHORT).show()
                 } else {
-                    // Navigate to IndexActivity
                     val intent = Intent(this, indexActivity::class.java)
+                    intent.putExtra("SUBJECT_COUNT", subjectNo)
+                    intent.putExtra("STUDENT_COUNT", studentNo)
                     startActivity(intent)
                 }
+
             }
 
         }

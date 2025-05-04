@@ -4,41 +4,70 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.EditText
 import android.widget.GridLayout
-import androidx.activity.enableEdgeToEdge
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class indexActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_index)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
         val gridLayout = findViewById<GridLayout>(R.id.gridLayout)
-        val rows = 10
-        val columns = 6
+
+        // Get values from intent
+        val subjectCount = intent.getIntExtra("SUBJECT_COUNT", 0)
+        val studentCount = intent.getIntExtra("STUDENT_COUNT", 0)
+
+        // Add 1 to subjectCount for the header row
+        val rows = studentCount + 1  // +1 for header row
+        val columns = subjectCount + 1  // +1 for student names column
+
         gridLayout.columnCount = columns
 
-        for (i in 0 until rows) {
+        // Create header row (subject names)
+        for (j in 0 until columns) {
+            val cell = if (j == 0) {
+                TextView(this).apply {
+                    text = "Student"
+                }
+            } else {
+                TextView(this).apply {
+                    text = "Sub $j"
+                }
+            }
+            cell.apply {
+                width = 200
+                height = 120
+                gravity = Gravity.CENTER
+                setPadding(8, 8, 8, 8)
+                setBackgroundResource(android.R.drawable.edit_text)
+            }
+            gridLayout.addView(cell)
+        }
+
+        // Create student rows
+        for (i in 1 until rows) {
             for (j in 0 until columns) {
-                val cell = EditText(this).apply {
+                val cell = if (j == 0) {
+                    // First column - student name/number
+                    TextView(this).apply {
+                        text = "Student $i"
+                    }
+                } else {
+                    // Subject columns - editable fields
+                    EditText(this).apply {
+                        hint = "Marks"
+                    }
+                }
+                cell.apply {
                     width = 200
                     height = 120
-                    hint = "R${i + 1}C${j + 1}"
                     gravity = Gravity.CENTER
                     setPadding(8, 8, 8, 8)
                     setBackgroundResource(android.R.drawable.edit_text)
                 }
                 gridLayout.addView(cell)
             }
-
         }
     }
 }
