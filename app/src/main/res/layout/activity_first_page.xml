@@ -21,12 +21,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/upperLayout"
+        android:id="@+id/teacherbtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#D74A4A"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintBottom_toTopOf="@id/lowerLayout"
+        app:layout_constraintBottom_toTopOf="@id/studentbtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -44,11 +46,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lowerLayout"
+        android:id="@+id/studentbtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFE500"
-        app:layout_constraintTop_toBottomOf="@id/upperLayout"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/teacherbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
